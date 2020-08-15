@@ -1,14 +1,16 @@
+//宣告資料
 var todoData = [];
-
+//取得元件
 var addBtn = document.getElementById("addTodo");
 var todoThing = document.getElementById("newTodo");
 var clearBtn = document.getElementById("clearTask");
 var todoList = document.getElementById("todoList");
 var taskCount = document.getElementById("taskCount");
-
+//監聽事件
 addBtn.addEventListener("click", addTodo);
 clearBtn.addEventListener("click", clearAll);
 todoList.addEventListener("click", actions);
+
 //渲染畫面
 function render() {
   var str = "";
@@ -47,10 +49,9 @@ function addTodo() {
   render();
   todoThing.value = "";
 }
-
+//刪除事項
 function deleteTodo(id) {
   var rmIndex = null;
-
   todoData.forEach((item, index, array) => {
     if (item.id == id) {
       rmIndex = index;
@@ -59,12 +60,12 @@ function deleteTodo(id) {
   todoData.splice(rmIndex, 1);
   render();
 }
-
+//清空事項
 function clearAll() {
   todoData.length = 0;
   render();
 }
-
+//完成事項
 function completeTask(id) {
   todoData.forEach((item, index, array) => {
     if (item.id == id) {
